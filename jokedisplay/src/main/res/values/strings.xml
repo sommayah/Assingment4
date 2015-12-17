@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">JokeDisplay</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="hello_world">Wait for the activity to load</string>
     <string name="action_settings">Settings</string>
 </resources>
