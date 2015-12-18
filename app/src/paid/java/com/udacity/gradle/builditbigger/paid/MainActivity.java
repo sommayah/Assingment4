@@ -1,4 +1,4 @@
-package com.udacity.gradle.builditbigger.free;
+package com.udacity.gradle.builditbigger.paid;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -7,15 +7,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
 import com.udacity.gradle.builditbigger.R;
 
 public class MainActivity extends ActionBarActivity {
 
     private ProgressBar spinner;
-    InterstitialAd mInterstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,18 +19,18 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         spinner = (ProgressBar) findViewById(R.id.progressBar);
         spinner.setVisibility(View.GONE);
-        mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
-
-        mInterstitialAd.setAdListener(new AdListener() {
-            @Override
-            public void onAdClosed() {
-                requestNewInterstitial();
-                new com.udacity.gradle.builditbigger.EndpointsAsyncTask().execute(getApplicationContext());
-            }
-        });
-
-        requestNewInterstitial();
+//        mInterstitialAd = new InterstitialAd(this);
+//        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+//
+//        mInterstitialAd.setAdListener(new AdListener() {
+//            @Override
+//            public void onAdClosed() {
+//                requestNewInterstitial();
+//                new EndpointsAsyncTask().execute(getApplicationContext());
+//            }
+//        });
+//
+//        requestNewInterstitial();
     }
 
 
@@ -63,12 +59,7 @@ public class MainActivity extends ActionBarActivity {
     public void tellJoke(View view){
 
         spinner.setVisibility(View.VISIBLE);
-        if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
-
-        } else {
-            new com.udacity.gradle.builditbigger.EndpointsAsyncTask().execute(this);
-        }
+        new EndpointsAsyncTask().execute(this);
 
     }
 
@@ -76,13 +67,5 @@ public class MainActivity extends ActionBarActivity {
     protected void onStop() {
         super.onStop();
         spinner.setVisibility(View.GONE);
-    }
-
-    private void requestNewInterstitial() {
-        AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice("SEE_YOUR_LOGCAT_TO_GET_YOUR_DEVICE_ID")
-                .build();
-
-        mInterstitialAd.loadAd(adRequest);
     }
 }
