@@ -1,4 +1,4 @@
-package com.udacity.gradle.builditbigger;
+package com.udacity.gradle.builditbigger.paid;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,9 +9,13 @@ import android.widget.ProgressBar;
 
 import com.udacity.gradle.builditbigger.R;
 
-
 /**
- * A placeholder fragment containing a simple view.
+ * A simple {@link Fragment} subclass.
+ * Activities that contain this fragment must implement the
+ * {@link MainActivityFragment.OnFragmentInteractionListener} interface
+ * to handle interaction events.
+ * Use the {@link MainActivityFragment#newInstance} factory method to
+ * create an instance of this fragment.
  */
 public class MainActivityFragment extends Fragment {
     private ProgressBar spinner;
