@@ -56,7 +56,6 @@ task runAndroidTest {
     mustRunAfter ":backend:appengineRun"
 
     doLast {
-        dependsOn ":backend:appengineStop"
         println "tests finished"
     }
 }
